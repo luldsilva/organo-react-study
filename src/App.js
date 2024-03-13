@@ -1,25 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-import Banner from './components/Banner/Banner';
+import Banner from './components/Banner';
+import TextField from './components/TextField';
 
 function App() {
   return (
     <div className="App">
       <Banner />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload. Test
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Teste React
-        </a>
-      </header>
+      <TextField label="Nome" placeholder="Digite seu nome"/>
+      <TextField label="Cargo" placeholder="Digite seu cargo"/>
+      <TextField label="Imagem" placeholder="Digite o endereço da imagem"/>
     </div>
   );
 }

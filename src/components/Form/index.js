@@ -5,16 +5,6 @@ import TextField from "../TextField";
 import "./Form.css";
 
 const Form = (props) => {
-  const teams = [
-    "Programação",
-    "Front-End",
-    "Data Science",
-    "Devops",
-    "UX e Design",
-    "Mobile",
-    "Inovação e Gestão",
-  ];
-
   const [name, setName] = useState("");
   const [position, setPosition] = useState("");
   const [image, setImage] = useState("");
@@ -28,6 +18,10 @@ const Form = (props) => {
       image,
       team
     })
+    setName('')
+    setPosition('')
+    setImage('')
+    setTeam('')
   };
 
   return (
@@ -54,7 +48,7 @@ const Form = (props) => {
           value={image}
           objectChanged={(value) => setImage(value)}
         />
-        <DropdownList label="Time" itens={teams} value={team} objectChanged={value => setTeam(value)}/>
+        <DropdownList label="Time" itens={props.teams} value={team} objectChanged={value => setTeam(value)}/>
         <Button>Criar Card</Button>
       </form>
     </section>

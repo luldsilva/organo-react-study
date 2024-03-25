@@ -40,6 +40,11 @@ function App() {
   const onNewEmployee = (employee) => {
     setEmployees([...employees, employee]);
   };
+
+  const deleteEmployee = () => {
+    console.log('deletando colaborador');
+  };
+
   return (
     <div className="App">
       <Banner />
@@ -50,7 +55,8 @@ function App() {
           name={team.name}
           primaryColor={team.primaryColor}
           secondaryColor={team.secondaryColor}
-          employees={employees.filter(e => e.team === team.name)} //.filter(employee => employee.team === team.name)
+          employees={employees.filter(e => e.team === team.name)}
+          onDeleting={deleteEmployee}
         />
       )}
     </div>

@@ -10,15 +10,18 @@ const Teams = (props) => {
       >
         <h3 style={{ borderColor: props.primaryColor }}>{props.name}</h3>
         <div className="employees">
-          {props.employees.map((employee) => (
-            <Employee
-              backgroundColor={props.primaryColor}
-              key={employee.name}
-              name={employee.name}
-              position={employee.position}
-              image={employee.image}
-            />
-          ))}
+          {props.employees.map((employee) => {
+            return (
+              <Employee
+                backgroundColor={props.primaryColor}
+                key={employee.name}
+                name={employee.name}
+                position={employee.position}
+                image={employee.image}
+                onDeleting={props.onDeleting}
+              />
+            );
+          })}
         </div>
       </section>
     )

@@ -9,6 +9,8 @@ const Form = (props) => {
   const [position, setPosition] = useState("");
   const [image, setImage] = useState("");
   const [team, setTeam] = useState("");
+  const [teamName, setTeamName] = useState("");
+  const [teamColor, setTeamColor] = useState("");
 
   const onSave = (event) => {
     event.preventDefault();
@@ -16,12 +18,12 @@ const Form = (props) => {
       name,
       position,
       image,
-      team
-    })
-    setName('')
-    setPosition('')
-    setImage('')
-    setTeam('')
+      team,
+    });
+    setName("");
+    setPosition("");
+    setImage("");
+    setTeam("");
   };
 
   return (
@@ -48,8 +50,34 @@ const Form = (props) => {
           value={image}
           objectChanged={(value) => setImage(value)}
         />
-        <DropdownList label="Time" itens={props.teams} value={team} objectChanged={value => setTeam(value)}/>
+        <DropdownList
+          label="Time"
+          itens={props.teams}
+          value={team}
+          objectChanged={(value) => setTeam(value)}
+        />
         <Button>Criar Card</Button>
+      </form>
+      <form onSubmit={(event) => {
+        event.preventDefault()
+        props.teamsRegister({name: teamName, color: teamColor})
+      }}>
+        <h2>Preencha os dados para criar um novo time</h2>
+        <TextField
+          required={true}
+          label="Nome"
+          placeholder="Digite o nome do time"
+          value={teamName}
+          objectChanged={(value) => setTeamName(value)}
+        />
+        <TextField
+          required={true}
+          label="Cargo"
+          placeholder="Digite a cor"
+          value={teamColor}
+          objectChanged={(value) => setTeamColor(value)}
+        />
+        <Button>Criar um novo time</Button>
       </form>
     </section>
   );

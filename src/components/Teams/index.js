@@ -12,7 +12,7 @@ const Teams = (props) => {
       >
         <input
           onChange={(event) =>
-            props.changeColor(event.target.value, props.name)
+            props.changeColor(event.target.value, props.team.id)
           }
           value={props.team.color} type="color" className="input-color"
         />
@@ -23,9 +23,7 @@ const Teams = (props) => {
               <Employee
                 backgroundColor={props.team.color}
                 key={employee.name}
-                name={employee.name}
-                position={employee.position}
-                image={employee.image}
+                employee={employee}
                 onDeleting={props.onDeleting}
               />
             );

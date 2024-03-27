@@ -42,6 +42,7 @@ function App() {
   const employeeInitial = [
     {
       id: uuidv4(),
+      favorite: false,
       name: "Lucas Silva",
       position: "Desenvolvedor de software",
       image: "https://github.com/luldsilva.png",
@@ -50,10 +51,6 @@ function App() {
   ];
 
   const [employees, setEmployees] = useState(employeeInitial);
-
-  // const onNewEmployee = (employee) => {
-  //   setEmployees([...employees, employee]);
-  // };
 
   const deleteEmployee = (id) => {
     setEmployees(employees.filter((employee) => employee.id !== id));
@@ -74,6 +71,14 @@ function App() {
     setTeams([...teams, { ...newTeam, id: uuidv4() }]);
   };
 
+  const resolveFavorite = (id) => {
+    setEmployees(employees.map(employee => {
+      console.log("employee dentro de resolve:", employee);
+      if(employee.id === id) employee.favorite = !employee.favorite;
+      return employee;
+    }))
+  }
+
   return (
     <div className="App">
       <Banner />
@@ -90,6 +95,7 @@ function App() {
 
         {teams.map((team) => (
           <Teams
+            onFavorite={resolveFavorite}
             changeColor={changeColorTeam}
             key={team.name}
             team={team}

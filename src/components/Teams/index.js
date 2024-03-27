@@ -3,7 +3,6 @@ import "./teams.css";
 import hexToRgba from "hex-to-rgba";
 
 const Teams = (props) => {
-  console.log(props);
   return (
     props.employees.length > 0 && (
       <section
@@ -25,6 +24,7 @@ const Teams = (props) => {
                 key={employee.name}
                 employee={employee}
                 onDeleting={props.onDeleting}
+                onFavorite={props.onFavorite}
               />
             );
           })}
